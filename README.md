@@ -4,6 +4,8 @@ Worm Commander is a browser-based snake game that doubles as a multi-modal, mult
 
 This repository is a standalone sample intended for GitHub: it includes the full TypeScript source, assets, and a simple build + static serve workflow.
 
+**[Live Demo Here](https://www.elumenotion.com/demos/voice-snakes)**
+
 ## What This Demonstrates
 
 - Multi-modal control: keyboard, mouse/touch, and voice commands
