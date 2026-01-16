@@ -1,0 +1,248 @@
+.v2-page {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 3rem;
+}
+
+kbd {
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--bs-border-color);
+  border-bottom-width: 2px;
+  border-radius: 0.25rem;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-size: 0.95em;
+}
+
+.snakes-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 960px) 280px;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.snakes-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  background: #0b1220;
+}
+
+.snakes-play-controls {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.snakes-icon-btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(15, 20, 35, 0.65);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  font: 600 0.9rem system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.snakes-icon-btn:hover {
+  background: rgba(15, 20, 35, 0.78);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.snakes-icon-btn.is-recording {
+  background: rgba(180, 32, 37, 0.82);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.snakes-icon-btn.is-recording:hover {
+  background: rgba(180, 32, 37, 0.92);
+}
+
+.snakes-icon-btn:active {
+  transform: translateY(1px);
+}
+
+.snakes-icon-btn:focus-visible {
+  outline: 2px solid rgba(254, 210, 9, 0.85);
+  outline-offset: 2px;
+}
+
+canvas#voice-snakes-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
+  image-rendering: pixelated;
+  outline: none;
+}
+
+/* Fullscreen overlay (CSS-based, works on all platforms including iOS) */
+.snakes-card.pseudo-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+.snakes-card.pseudo-fullscreen canvas#voice-snakes-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Hide page scroll when pseudo-fullscreen is active */
+body.has-pseudo-fullscreen {
+  overflow: hidden !important;
+}
+
+.snakes-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 1rem;
+}
+
+.snakes-overlay-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.25rem 1rem;
+  width: min(360px, 100%);
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.snakes-overlay-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.snakes-overlay-subtitle {
+  color: var(--bs-secondary-color);
+  margin-bottom: 0.75rem;
+}
+
+.snakes-overlay-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+}
+
+.snakes-overlay-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.snakes-overlay-stat-label {
+  color: var(--bs-secondary-color);
+  font-size: 0.9rem;
+}
+
+.snakes-overlay-stat-value {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.snakes-panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: var(--bs-body-bg);
+}
+
+.snakes-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.snakes-stat:last-of-type {
+  border-bottom: none;
+}
+
+.snakes-stat-label {
+  color: var(--bs-secondary-color);
+}
+
+.snakes-stat-value {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.snakes-avatar {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.snakes-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bs-border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.snakes-actions {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.snakes-agent {
+  margin-bottom: 1rem;
+}
+
+.snakes-agent guideants-chat {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .snakes-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .v2-page {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .v2-page {
+    padding: 1.5rem 1rem;
+  }
+}

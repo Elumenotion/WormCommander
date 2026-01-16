@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worm Commander</title>
+    <meta
+      name="description"
+      content="Worm Commander: a Snake game demo (canvas) with voice controls."
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./voice-snakes.css" />
+    <style>
+      .v2-section {
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container-xxl">
+      <article class="v2-page">
+        <section class="v2-section">
+          <h1>Worm Commander</h1>
+          <p>
+            Rotate with <kbd>←</kbd>/<kbd>→</kbd> (or <kbd>A</kbd>/<kbd>D</kbd>) in
+            30° steps. Click or tap on the play area to steer toward that
+            location. <kbd>Space</kbd> toggles voice. Press <kbd>R</kbd> to
+            restart.
+          </p>
+          <p>
+            You can drive with the keyboard, give small orders, or even just say
+            "Eat and grow" and the worm will do pretty ok without your help.
+          </p>
+        </section>
+        <section class="v2-section">
+          <div class="snakes-layout">
+            <div class="snakes-card">
+              <canvas
+                id="voice-snakes-canvas"
+                width="900"
+                height="900"
+                aria-label="Snake game board"
+                tabindex="0"
+              ></canvas>
+              <div class="snakes-play-controls" aria-label="Play area controls">
+                <button
+                  type="button"
+                  class="snakes-icon-btn"
+                  id="voice-snakes-mic-toggle"
+                  aria-label="Toggle microphone"
+                >
+                  Mic
+                </button>
+                <button
+                  type="button"
+                  class="snakes-icon-btn"
+                  id="voice-snakes-fullscreen-toggle"
+                  aria-label="Toggle fullscreen"
+                >
+                  Fullscreen
+                </button>
+              </div>
+              <div class="snakes-overlay" id="voice-snakes-overlay" aria-live="polite" hidden>
+                <div class="snakes-overlay-card">
+                  <div class="snakes-overlay-title" id="voice-snakes-overlay-title">
+                    Game Over
+                  </div>
+                  <div class="snakes-overlay-subtitle" id="voice-snakes-overlay-subtitle"></div>
+                  <div class="snakes-overlay-stats" id="voice-snakes-overlay-stats" hidden>
+                    <div class="snakes-overlay-stat">
+                      <span class="snakes-overlay-stat-label">Time</span>
+                      <span class="snakes-overlay-stat-value" id="voice-snakes-final-time">0:00</span>
+                    </div>
+                    <div class="snakes-overlay-stat">
+                      <span class="snakes-overlay-stat-label">Score</span>
+                      <span class="snakes-overlay-stat-value" id="voice-snakes-final-score">0</span>
+                    </div>
+                    <div class="snakes-overlay-stat">
+                      <span class="snakes-overlay-stat-label">High Score</span>
+                      <span class="snakes-overlay-stat-value" id="voice-snakes-final-high-score">0</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="voice-snakes-restart">
+                    Restart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <aside class="snakes-panel">
+              <div class="snakes-agent">
+                <guideants-chat
+                  id="worm-commander-chat"
+                  class="theme-elumenotion"
+                  api-base-url="https://api.guideants.ai"
+                  pub-id="a64e4f78-a486-4747-87fa-42a5655e88c6"
+                  speech-to-text-enabled="true"
+                  input-label
+                  input-placeholder="Say: left, right, pause, resume, restart"
+                ></guideants-chat>
+              </div>
+              <div class="snakes-stat">
+                <div class="snakes-stat-label">Time</div>
+                <div class="snakes-stat-value" id="voice-snakes-clock">0:00</div>
+              </div>
+              <div class="snakes-stat">
+                <div class="snakes-stat-label">Score</div>
+                <div class="snakes-stat-value" id="voice-snakes-score">0</div>
+              </div>
+              <div class="snakes-stat">
+                <div class="snakes-stat-label">High Score</div>
+                <div class="snakes-stat-value" id="voice-snakes-high-score">0</div>
+              </div>
+              <div class="snakes-avatar">
+                <img src="./sounds/voice-snakes/Queen-avatar.png" alt="Queen avatar" />
+              </div>
+              <div class="snakes-actions">
+                <button type="button" class="btn btn-outline-secondary" id="voice-snakes-start">
+                  Start
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  id="voice-snakes-pause"
+                  disabled
+                >
+                  Pause
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  id="voice-snakes-reset"
+                  disabled
+                >
+                  Restart
+                </button>
+                <button type="button" class="btn btn-outline-secondary" id="voice-snakes-music">
+                  🔇 Music Off
+                </button>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </article>
+    </main>
+    <script type="module" src="./worm-commander.js"></script>
+  </body>
+</html>

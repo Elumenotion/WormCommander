@@ -1,0 +1,7 @@
+{
+  "name": "Worm Commander",
+  "description": "I command the worm.",
+  "defaultModel": "gpt-4.1-mini",
+  "defaultAssistant": null,
+  "crew": []
+}

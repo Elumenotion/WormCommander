@@ -1,0 +1,20 @@
+{
+  "name": "worm-commander",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/voice-snakes.ts --bundle --format=esm --target=es2020 --outfile=public/worm-commander.js",
+    "dev": "esbuild src/voice-snakes.ts --bundle --format=esm --target=es2020 --outfile=public/worm-commander.js --watch",
+    "start": "npx serve public"
+  },
+  "dependencies": {
+    "guideants": "^0.6.13"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "serve": "^14.2.0",
+    "typescript": "^5.0.0"
+  }
+}
